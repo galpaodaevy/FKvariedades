@@ -1148,8 +1148,7 @@
       }
       lines.push(`*Pagamento:* ${payment}`);
 
-      const message = encodeURIComponent(lines.join("
-"));
+      const message = encodeURIComponent(lines.join("\n"));
       const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
       window.open(url, "_blank", "noopener,noreferrer");
     }
