@@ -436,7 +436,7 @@
         name: "Macarrão FK Molho Branco",
         description: "Macarrão no copo ao molho branco especial. Acompanha bacon, calabresa, milho e queijo.",
         price: 10.00,
-        image: "https://images.unsplash.com/photo-1645112411341-6c4fd023714a?auto=format&fit=crop&w=600&q=80",
+        image: "images/macarrao-branco.webp",
         addons: [
           { id: "ervilha", name: "Ervilha", price: 2.00 },
           { id: "azeitona", name: "Azeitona", price: 2.00 }
@@ -464,7 +464,7 @@
         name: "Cuscuz Recheado",
         description: "Porção generosa de 500 ml bem recheada com calabresa, bacon e queijo.",
         price: 10.00,
-        image: "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=600&q=80"
+        image: "images/cuscuz.webp"
       },
 
       // 3. BATATAS / PORÇÕES
@@ -792,7 +792,7 @@
               src="${product.image}"
               alt="${product.name}"
               loading="lazy"
-              class="w-full h-full object-cover"
+              class="w-full h-full ${product.image.startsWith('images/') ? 'object-contain bg-[#100d0b]' : 'object-cover'}"
             />
           </div>
         </article>
@@ -830,6 +830,8 @@
       selectedAddonIds = new Set();
 
       document.getElementById("modalProductImg").src = product.image;
+      document.getElementById("modalProductImg").classList.toggle("object-contain", product.image.startsWith("images/"));
+      document.getElementById("modalProductImg").classList.toggle("object-cover", !product.image.startsWith("images/"));
       document.getElementById("modalProductImg").alt = product.name;
       document.getElementById("modalProductCategory").textContent = product.categoryLabel;
       document.getElementById("modalProductName").textContent = product.name;
